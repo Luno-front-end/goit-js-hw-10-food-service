@@ -1,14 +1,10 @@
-import cardMenu from '../templates/shop-card.hbs'
+import cardMenu from '../templates/shop-card.hbs';
 import menuArrey from '../js/menu.json';
 
-const cardsMarcup = createMenuCards(menuArrey[1])
-
-// const Theme = {
-//   LIGHT: 'light-theme',
-//   DARK: 'dark-theme',
-// };
+const cardsMarcup = createMenuCards(menuArrey);
+const menuEl = document.querySelector('.js-menu');
 
 function createMenuCards(menuArrey) {
-    return cardMenu(menuArrey)
+  return cardMenu(menuArrey);
 }
-console.log(cardsMarcup)
+menuEl.insertAdjacentHTML('beforeend', cardsMarcup);
