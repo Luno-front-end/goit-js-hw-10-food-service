@@ -14,13 +14,12 @@ refs.checkbox.addEventListener('change', onBlackWhite);
 
 function onBlackWhite(e) {
   const checkThem = localStorage.getItem('Them');
-
-  if (e.target.checked === false) {
-    localStorage.setItem('Them', Theme.LIGHT);
-    checkOff();
-  } else if (e.target.checked === true) {
+  if (e.target.checked) {
     localStorage.setItem('Them', Theme.DARK);
-    checkOn();
+    refs.body.classList.add(Theme.DARK);
+  } else {
+    localStorage.setItem('Them', Theme.LIGHT);
+    refs.body.classList.remove(Theme.DARK);
   }
 }
 
@@ -31,26 +30,12 @@ function checkboxPosition() {
   }
 }
 
-function checkOn() {
-  const checkThem = localStorage.getItem('Them');
-  if (checkThem === Theme.DARK) {
-    refs.body.classList.remove(Theme.LIGHT);
-    refs.body.classList.add(checkThem);
-  }
-}
-function checkOff() {
-  const checkThem = localStorage.getItem('Them');
-  if (checkThem === Theme.LIGHT) {
-    refs.body.classList.remove(Theme.DARK);
-    refs.body.classList.add(checkThem);
-  }
-}
-
 function currentCheckThem() {
   const checkThem = localStorage.getItem('Them');
 
   if (!checkThem) {
     localStorage.setItem('Them', Theme.LIGHT);
+    refs.body.classList.add(Theme.LIGHT);
   } else {
     refs.body.classList.add(checkThem);
   }
